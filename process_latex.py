@@ -497,22 +497,21 @@ def get_differential_var_str(text):
     return text
 
 def test_sympy():
-    print process_sympy("e^{(45 + 2)}")
-    print process_sympy("e + 5")
-    print process_sympy("5 + e")
-    print process_sympy("e")
-    print process_sympy("\\frac{dx}{dy} \\int y x^2 dy")
-    print process_sympy("\\frac{dx}{dy} 5")
-    print process_sympy("\\frac{d}{dx} \\int x^2 dx")
-    print process_sympy("\\frac{dx}{dy} \\int x^2 dx")
-    print process_sympy("\\frac{d}{dy} x^2 + x y = 0")
-    print process_sympy("\\frac{d}{dy} x^2 + x y = 2")
-    print process_sympy("\\frac{d x^3}{dy}")
-    print process_sympy("\\frac{d x^3}{dy} + x^3")
-    print process_sympy("\\int^{5x}_{2} x^2 dy")
-    print process_sympy("\\int_{5x}^{2} x^2 dx")
-    print process_sympy("\\int x^2 dx")
-    print process_sympy("2 4 5 - 2 3 1")
+    print(process_sympy("e^{(45 + 2)}")) # e**(2 + 45)
+    print(process_sympy("e + 5")) # e + 5
+    print(process_sympy("5 + e")) # e + 5
+    print(process_sympy("e")) # e
+    print(process_sympy("\\frac{dx}{dy} \\int y x^2 dy")) # Derivative(x, y)*Integral(x**2*y, y)
+    print(process_sympy("\\frac{dx}{dy} 5")) # Derivative(x, y)*5
+    print(process_sympy("\\frac{d}{dx} \\int x^2 dx")) # Derivative(Integral(x**2, x), x)
+    print(process_sympy("\\frac{dx}{dy} \\int x^2 dx")) # Derivative(x, y)*Integral(x**2, x)
+    print(process_sympy("\\frac{d}{dy} x^2 + x y = 0")) # Eq(x*y + Derivative(x**2, y), 0)
+    print(process_sympy("\\frac{d}{dy} x^2 + x y = 2")) # Eq(x*y + Derivative(x**2, y), 2)
+    print(process_sympy("\\frac{d x^3}{dy}")) # Derivative(x**3, y)
+    print(process_sympy("\\frac{d x^3}{dy} + x^3")) # Derivative(x**3, y) + x**3
+    print(process_sympy("\\int^{5x}_{2} x^2 dy")) # Integral(x**2, (y, 2, 5*x))
+    print(process_sympy("\\int_{5x}^{2} x^2 dx")) # Integral(x**2, (x, 5*x, 2))
+    print(process_sympy("\\int x^2 dx")) # Integral(x**2, x)
 
 if __name__ == "__main__":
     test_sympy()
